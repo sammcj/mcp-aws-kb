@@ -15,6 +15,11 @@ An MCP server implementation for retrieving information from the AWS Knowledge B
     - `query` (string): The search query for retrieval.
     - `knowledgeBaseId` (string): The ID of the AWS Knowledge Base.
     - `n` (number, optional): Number of results to retrieve (default: 3).
+  - Response format:
+    - The response now returns two separate content items:
+      - A text item containing the raw context from the knowledge base.
+      - A JSON item containing the structured RAG sources with metadata (id, fileName, snippet, and score).
+    - This separation allows for more flexible processing of the results.
 
 ## Configuration
 

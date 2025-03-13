@@ -172,10 +172,23 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
       const result = await retrieveContext(query, actualKnowledgeBaseId, n);
       if (result.isRagWorking) {
+        // Format RAG sources for readability
+        const formattedSources = result.ragSources.map((source, index) => {
+          return `Source ${index + 1}: ${source.fileName} (score: ${source.score.toFixed(3)})\n${source.snippet}`;
+        }).join('\n\n');
+
         return {
           content: [
-            { type: "text", text: `Context: ${result.context}` },
-            { type: "text", text: `RAG Sources: ${JSON.stringify(result.ragSources)}` },
+            {
+              type: "text",
+              text: result.context
+            },
+            {
+              type: "json",
+              json: {
+                ragSources: result.ragSources
+              }
+            }
           ],
         };
       } else {
