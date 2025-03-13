@@ -60,6 +60,7 @@ Add this to your `claude_desktop_config.json`:
       "env": {
         "AWS_ACCESS_KEY_ID": "YOUR_ACCESS_KEY_HERE",
         "AWS_SECRET_ACCESS_KEY": "YOUR_SECRET_ACCESS_KEY_HERE",
+        "AWS_SESSION_ID": "YOUR_OPTIONAL_SESSION_ID_FOR_SSO_TEMPORARY_CREDENTIALS_HERE",
         "AWS_REGION": "YOUR_AWS_REGION_HERE",
         "AWS_KB_IDS": "[\"kb-12345\", \"kb-67890\"]"
       }
@@ -77,8 +78,11 @@ Add this to your `claude_desktop_config.json`:
       "command": "docker",
       "args": [ "run", "-i", "--rm", "-e", "AWS_REGION", "-e", "AWS_KB_IDS", "-v", "${HOME}/.aws:/root/.aws", "mcp/aws-kb-retrieval-server" ],
       "env": {
+        "AWS_ACCESS_KEY_ID": "YOUR_ACCESS_KEY_HERE",
+        "AWS_SECRET_ACCESS_KEY": "YOUR_SECRET_ACCESS_KEY_HERE",
+        "AWS_SESSION_ID": "YOUR_OPTIONAL_SESSION_ID_FOR_SSO_TEMPORARY_CREDENTIALS_HERE",
         "AWS_REGION": "YOUR_AWS_REGION_HERE",
-        "AWS_KB_IDS": "[\"kb-12345\"]"
+        "AWS_KB_IDS": "[\"kb-12345\", \"kb-67890\"]"
       }
     }
   }
@@ -99,6 +103,7 @@ Add this to your `claude_desktop_config.json`:
       "env": {
         "AWS_ACCESS_KEY_ID": "YOUR_ACCESS_KEY_HERE",
         "AWS_SECRET_ACCESS_KEY": "YOUR_SECRET_ACCESS_KEY_HERE",
+        "AWS_SESSION_ID": "YOUR_OPTIONAL_SESSION_ID_FOR_SSO_TEMPORARY_CREDENTIALS_HERE",
         "AWS_REGION": "YOUR_AWS_REGION_HERE",
         "AWS_KB_IDS": "[\"kb-12345\", \"kb-67890\"]"
       }
@@ -119,8 +124,11 @@ Add this to your `claude_desktop_config.json`:
         "@modelcontextprotocol/server-aws-kb-retrieval"
       ],
       "env": {
+        "AWS_ACCESS_KEY_ID": "YOUR_ACCESS_KEY_HERE",
+        "AWS_SECRET_ACCESS_KEY": "YOUR_SECRET_ACCESS_KEY_HERE",
+        "AWS_SESSION_ID": "YOUR_OPTIONAL_SESSION_ID_FOR_SSO_TEMPORARY_CREDENTIALS_HERE",
         "AWS_REGION": "YOUR_AWS_REGION_HERE",
-        "AWS_KB_IDS": "[\"kb-12345\"]"
+        "AWS_KB_IDS": "[\"kb-12345\", \"kb-67890\"]"
       }
     }
   }
