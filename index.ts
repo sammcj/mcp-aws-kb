@@ -24,6 +24,11 @@ if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   };
+
+  // Add session token if provided (for temporary credentials)
+  if (process.env.AWS_SESSION_TOKEN) {
+    clientConfig.credentials.sessionToken = process.env.AWS_SESSION_TOKEN;
+  }
 }
 
 const bedrockClient = new BedrockAgentRuntimeClient(clientConfig);

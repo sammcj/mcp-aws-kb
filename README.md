@@ -27,6 +27,7 @@ You have two options for configuring AWS credentials:
 1. Obtain AWS access key ID, secret access key, and region from the AWS Management Console.
 2. Ensure these credentials have appropriate permissions for Bedrock Agent Runtime operations.
 3. Set the environment variables as shown in the configuration examples below.
+4. For temporary credentials, you can also provide a session token using the `AWS_SESSION_TOKEN` environment variable.
 
 #### Option 2: AWS SSO (Single Sign-On)
 
@@ -121,6 +122,33 @@ Add this to your `claude_desktop_config.json`:
         "AWS_REGION": "YOUR_AWS_REGION_HERE",
         "AWS_KB_IDS": "[\"kb-12345\"]"
       }
+    }
+  }
+}
+```
+
+#### Local Repository (from cloned/built repo)
+
+```json
+{
+  "mcpServers": {
+    "aws-kb": {
+      "command": "node",
+      "args": [
+        "/path/to/mcp-aws-kb/dist/index.js"
+      ],
+      "env": {
+        "AWS_ACCESS_KEY_ID": "YOUR_ACCESS_KEY_HERE",
+        "AWS_SECRET_ACCESS_KEY": "YOUR_SECRET_ACCESS_KEY_HERE",
+        "AWS_SESSION_ID": "YOUR_OPTIONAL_SESSION_ID_FOR_SSO_TEMPORARY_CREDENTIALS_HERE",
+        "AWS_REGION": "YOUR_AWS_REGION_HERE",
+        "AWS_KB_IDS": "[\"kb-12345\", \"kb-67890\"]"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "retrieve_from_aws_kb"
+      ],
+      "timeout": 120
     }
   }
 }
